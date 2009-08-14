@@ -90,6 +90,8 @@ use Perldoc::Page::Convert;
 use Perldoc::Section;  
 EOT
 
+die $@ if $@;
+
 
 #--Compute link addresses for core modules & pragmas-----------------------
 

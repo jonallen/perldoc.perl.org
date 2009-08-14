@@ -29,8 +29,8 @@ sub convert {
   my $pom    = $parser->parse_text($pod);
   my $index  = build_index($pom);
   my $body   = Perldoc::Convert::html->print($pom);
-  return "<!--  [% TAGS [~ ~] %]  -->\n$index$body";
-  return $index."<!--  [% TAGS [~ ~] %]  -->\n$body";
+  return "<!--  [% TAGS [P( )P] %]  -->\n$index$body";
+  return $index."<!--  [% TAGS [P( )P] %]  -->\n$body";
 }
 
 
@@ -235,21 +235,21 @@ sub view_seq_link {
     if ($page && $section && $page eq 'perlfunc') {
       (my $function = $section) =~ s/(-?[a-z]+).*/$1/i;
       if (Perldoc::Function::exists($function)) {
-        $href = '[~ path ~]'."functions/$function.html";
+        $href = '[P( path )P]'."functions/$function.html";
         return qq{<a href="$href">$section</a>};
       } else {
         $section = escape($section);
-        $href = '[~ path ~]'."perlfunc.html#$section";
+        $href = '[P( path )P]'."perlfunc.html#$section";
         #warn("Missing function '$function' in link '$link' from page '$document_name', using $href\n");
         return qq{<a href="$href">$inferred</a>};
       }
     }
     if ($page) {
       if (Perldoc::Page::exists($page)) {
-        $href = '[~ path ~]'."$page.html";
+        $href = '[P( path )P]'."$page.html";
         $href =~ s/::/\//g;
       } elsif (Perldoc::Function::exists($page)) {
-        $href = '[~ path ~]'."functions/$page.html";
+        $href = '[P( path )P]'."functions/$page.html";
         return qq{<a href="$href">$page</a>};      
       } else {
         $href = "http://search.cpan.org/perldoc/$page";

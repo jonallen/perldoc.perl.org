@@ -9,7 +9,6 @@ use FindBin qw/$Bin/;
 use Getopt::Long;
 use Shell qw/cp/;
 use Template;
-use Text::Template qw/fill_in_string/;
 
 use lib "$Bin/lib";
 use Perldoc::Config;
@@ -76,6 +75,8 @@ if ($options{perl}) {
 eval <<EOT;
 use Perldoc::Page;
 EOT
+
+die $@ if $@;
 
 
 #--Set update timestamp---------------------------------------------------
