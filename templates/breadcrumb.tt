@@ -1,0 +1,11 @@
+  [% IF breadcrumb %]
+    [% breadcrumb %]
+  [% ELSE %]
+    <a href="[% path %]index.html">Home</a> &gt;
+    [% IF breadcrumbs %]
+      [% FOREACH crumb IN breadcrumbs %]
+        <a href="[% path %][% crumb.url %]">[% crumb.name %]</a> &gt;
+      [% END %]
+    [% END %]
+    [% pagename %]
+  [% END %]

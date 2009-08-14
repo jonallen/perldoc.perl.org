@@ -1,0 +1,34 @@
+<h1>[% pagename %]</h1>
+<div class="mod_az_list">
+  <a href="[% path %]index-functions.html">Perl functions A-Z</a> |
+  <a href="[% path %]index-functions-by-cat.html">Perl functions by category</a> |
+  <a href="[% path %]perlfunc.html">The 'perlfunc' manpage</a>
+</div>
+
+<div class="mod_az_list">
+  [% FOREACH az IN function_az %]
+    [% IF az.link %]
+      <a href="[% az.link %]">[% az.letter %]</a>
+    [% ELSE %]
+      [% az.letter %]
+    [% END %]
+    [% UNLESS loop.last %]
+      |
+    [% END %]
+  [% END %]
+</div>
+
+[% FOREACH az IN function_az %]
+  [% IF az.link %]
+    <a name="[% az.letter %]"></a>
+    <h2>[% az.letter %]</h2>
+    <ul>
+      [% FOREACH function IN az.functions %]
+        <li><a href="functions/[% function.url %]">[% function.name %]</a>
+        [% IF function.description %]
+          - [% function.description %]
+        [% END %]
+      [% END %]
+    </ul>
+  [% END %]
+[% END %]

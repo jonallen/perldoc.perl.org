@@ -1,0 +1,3 @@
+perldocSearch.indexData.functions = new Hash ({
+[% FOREACH function IN functions %]  "_[% function.name %]": "[% function.description %]"[% UNLESS loop.last %],[% END %]
+[% END %]});

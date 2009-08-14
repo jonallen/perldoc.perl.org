@@ -1,0 +1,11 @@
+<h1>[% pagename %]</h1>
+
+<div class="mod_az_list">
+  <a href="[% path %]index-functions.html">Perl functions A-Z</a> |
+  <a href="[% path %]index-functions-by-cat.html">Perl functions by category</a> |
+  <a href="[% path %]perlfunc.html">The 'perlfunc' manpage</a>
+</div>
+
+[% FILTER evaltt %]
+  [% pod_html %]
+[% END %]

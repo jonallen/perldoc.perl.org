@@ -1,0 +1,21 @@
+<h1>[% pagename %]</h1>
+<div class="mod_az_list">
+  [% FOREACH az IN module_az %]
+    [% IF az.link %]
+      <a href="[% path %][% az.link %]">[% az.letter %]</a>
+    [% ELSE %]
+      [% az.letter %]
+    [% END %]
+    [% UNLESS loop.last %]
+      |
+    [% END %]
+  [% END %]
+</div>
+<ul>
+  [% FOREACH module IN module_links %]
+    <li><a href="[% path %][% module.url %]">[% module.name %]</a>
+    [% IF module.title %]
+      - [% module.title %]
+    [% END %]
+  [% END %]
+</ul>

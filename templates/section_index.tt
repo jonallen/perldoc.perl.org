@@ -1,0 +1,9 @@
+<h1>[% pagename %]</h1>
+<ul>
+  [% FOREACH page IN section_pages %]
+    <li><a href="[% page.link %]">[% page.name %]</a>
+    [% IF page.title %]
+      - [% page.title %]
+    [% END %]
+  [% END %]
+</ul>

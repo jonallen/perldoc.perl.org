@@ -1,0 +1,44 @@
+--------------------
+- perldoc.perl.org -
+--------------------
+
+DESCRIPTION
+
+This archive contains the source code for the website http://perldoc.perl.org,
+which holds the core documentaion for Perl in HTML and PDF formats.
+
+
+USAGE
+
+  perl build-perldoc-pdf.pl --output-path /path/to/output
+  perl build-perldoc-static.pl --output-path /path/to/output
+  perl build-perldoc-html.pl --output-path /path/to/output
+
+
+NOTES
+
+Please be aware that this software was written for the specific purpose
+of generating the perldoc.perl.org website, and not to solve generic
+problems like "convert a directory of Pod to HTML" or "produce documentation
+for Perl and all modules installed on my system". However, the templates,
+CSS, and conversion routines should give you a head start should you wish
+to write a more generic tool.
+
+
+LICENSE
+
+Unless stated otherwise, all files are Copyright (C) 2008 Jon Allen and
+distributed under the terms of the Artistic License version 2.0.
+
+The Perl Onion logo is a trademark of The Perl Foundation. See
+http://www.perlfoundation.org/perl_trademark for usage details.
+
+A modified copy of the Pod::POM module is included in the lib/ directory.
+Pod::POM is Copyright (C) 2000-2002 Andy Wardley and distributed under the
+same terms as Perl itself.
+
+
+CONTACT
+
+Jon Allen (JJ) <jj@jonallen.info>
+http://perl.jonallen.info/projects/perldoc

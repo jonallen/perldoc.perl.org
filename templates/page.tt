@@ -1,0 +1,23 @@
+<h1>[% pagename %]</h1>
+
+[% FILTER evaltt %]
+  [% pod_html %]
+[% END %]
+
+[% IF page_index %]
+  <div id="page_index">
+    <div id="page_index_header">
+      <div id="page_index_close"><a href="#" onClick="pageIndex.hide();return false;"></a></div>
+      <div id="page_index_title"><span class="page_index_top">Page index</span></div>
+      <div id="page_index_topright"></div>
+    </div>
+    <div id="page_index_content">
+      [% page_index %]
+    </div>
+    <div id="page_index_footer">
+      <div id="page_index_bottomleft"></div>
+      <div id="page_index_bottom"><span class="page_index_bottom"></span></div>
+      <div id="page_index_resize"></div>
+    </div>
+  </div>
+[% END %]

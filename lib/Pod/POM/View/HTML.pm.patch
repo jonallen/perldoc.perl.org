@@ -1,0 +1,36 @@
+--- HTML.pm.orig	2009-04-02 10:10:37.000000000 +0100
++++ HTML.pm	2009-04-02 10:17:10.000000000 +0100
+@@ -27,6 +27,7 @@
+ use Pod::POM::View;
+ use base qw( Pod::POM::View );
+ use vars qw( $VERSION $DEBUG $ERROR $AUTOLOAD );
++use HTML::Entities;
+ use Text::Wrap;
+ 
+ $VERSION = sprintf("%d.%02d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/);
+@@ -208,11 +209,7 @@
+ 
+ sub view_verbatim {
+     my ($self, $text) = @_;
+-    for ($text) {
+-	s/&/&amp;/g;
+-	s/</&lt;/g;
+-	s/>/&gt;/g;
+-    }
++    $text = encode_entities($text);
+     return "<pre>$text</pre>\n\n";
+ }
+ 
+@@ -370,11 +367,7 @@
+      my ($self, $text) = @_;
+ 
+      unless ($HTML_PROTECT) {
+-	for ($text) {
+-	    s/&/&amp;/g;
+-	    s/</&lt;/g;
+-	    s/>/&gt;/g;
+-	}
++	$text = encode_entities($text);
+      }
+ 
+      $text =~ s{

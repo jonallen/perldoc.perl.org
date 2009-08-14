@@ -1,0 +1,56 @@
+
+    <h1 id="results_title">Search results</h1>
+    
+    <h2>Man pages</h2>
+    <div id="pod_search_results" class="search_results"></div>
+    
+    <h2>Functions</h2>
+    <div id="function_search_results" class="search_results"></div>
+    
+    <h2>Core modules</h2>
+    <div id="module_search_results" class="search_results"></div>
+
+    <h2>FAQs</h2>
+    <div id="faq_search_results" class="search_results"></div>
+
+<script language="JavaScript" src="combined-20090729.js"></script>
+<script language="JavaScript" src="search.js"></script>
+<script language="JavaScript" src="indexFunctions.js"></script>
+<script language="JavaScript">
+  var args = location.search.substring(1).parseQueryString();
+  perldocSearch.run(args);
+</script>
+
+<div class=spacer></div>
+<p>
+The <b>perldoc.perl.org</b> search engine is optimised to index Perl functions, core modules, and FAQs.
+To perform a full-text search of the documentation, please repeat your query using Google:
+</p>
+<center>
+<!-- SiteSearch Google -->
+  
+  <FORM method=GET action="http://www.google.com/search">
+  <input type=hidden name=ie value=UTF-8><input type=hidden name=oe value=UTF-8>
+  <TABLE bgcolor="#FFFFFF">
+    <tr>
+      <td>
+        <A HREF="http://www.google.com/">
+        <IMG SRC="Logo_40wht.gif" border="0" ALT="Google"></A>
+      </td>
+      <td>
+	  <script>
+	    if (args.q) {
+	      document.write('<INPUT TYPE=text name=q size=31 maxlength=255 value="' + args.q + '">');
+	    } else {
+	      document.write('<INPUT TYPE=text name=q size=31 maxlength=255 value="">');
+	    }
+	  </script>
+	<INPUT type=submit name=btnG VALUE="Google Search"><font size=-1>
+	<input type=hidden name=domains value="perldoc.perl.org"><br>
+        <input type=hidden name=as_ft value="e">
+        <input type=hidden name=as_filetype value="pdf">
+	<input type=radio name=sitesearch value=""> WWW <input type=radio name=sitesearch value="perldoc.perl.org" checked> perldoc.perl.org <br></font></td></tr></TABLE></FORM><!-- SiteSearch Google -->
+</center>
+
+    &nbsp;
+            

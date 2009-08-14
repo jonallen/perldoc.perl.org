@@ -1,0 +1,3 @@
+perldocSearch.indexData.modules = new Hash ({
+[% FOREACH module IN modules %]  "[% module.name %]": "[% module.description %]"[% UNLESS loop.last %],[% END %]
+[% END %]});

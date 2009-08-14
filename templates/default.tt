@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>[% pagename %] - [% site_title %]</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="Content-Language" content="en-gb">
+  <link href="[% path %]css-20090730.css" rel="stylesheet" rev="stylesheet" type="text/css" media="screen">
+</head>
+
+<body onLoad="perldoc.startup();" onPageShow="if (event.persisted) perldoc.startup();">
+    <div id="page">
+      
+      <div id="header">
+	<div id="homepage_link">
+	  <a href="[% path %]index.html"></a>
+	</div>
+        <div id="search_form">
+          <form action="[% path %]search.html" method="GET" id="search">
+            <input type="text" name="q" id="search_box" alt="Search">
+          </form>
+        </div>
+      </div>
+      
+      <div id="body">
+        <div id="left_column">
+          <div class="side_group">
+            <div class="side_panel doc_panel">
+              <p>Manual</p>
+              <ul>
+                <li><a href="[% path %]index-overview.html">Overview</a>
+                <li><a href="[% path %]index-tutorials.html">Tutorials</a>
+                <li><a href="[% path %]index-faq.html">FAQs</a>
+                <li><a href="[% path %]index-history.html">History / Changes</a>
+                <li><a href="[% path %]index-licence.html">License</a>
+              </ul>
+            </div>
+            <div class="side_panel doc_panel">
+              <p>Reference</p>
+              <ul>
+                <li><a href="[% path %]index-language.html">Language</a>
+                <li><a href="[% path %]index-functions.html">Functions</a>
+                <li><a href="[% path %]perlop.html">Operators</a>
+                <li><a href="[% path %]perlvar.html">Special Variables</a>
+                <li><a href="[% path %]index-pragmas.html">Pragmas</a>
+                <li><a href="[% path %]index-utilities.html">Utilities</a>
+                <li><a href="[% path %]index-internals.html">Internals</a></li>
+                <li><a href="[% path %]index-platforms.html">Platform Specific</a>
+              </ul>
+            </div>
+            <div class="side_panel doc_panel">
+              <p>Modules</p>
+              <ul>
+		<li>
+		[% az_indexes = [] %]
+                [% FOREACH az IN module_az %]
+                  [% IF az.link %]
+		    [% az_indexes.push(az) %]
+		  [% END %]
+		[% END %]
+		[% FOREACH az IN az_indexes %]
+                    <a href="[% path %][% az.link %]">[% az.letter %]</a>
+                    [% UNLESS loop.last %]
+                      [% IF ((loop.count % 5) == 0) %]
+                        <li>
+                      [% ELSE %]
+                        &bull;
+                      [% END %]
+                    [% END %]
+                [% END %]
+              </ul>
+            </div>
+          </div>
+          <div class="side_group">
+            <div class="side_panel links_panel">
+              <p>News / Blogs</p>
+              <ul>
+        <li><a href="http://perlbuzz.com">Perl Buzz</a></li>
+        <li><a href="http://ironman.enlightenedperl.org">Perl Iron Man</a></li>
+        <li><a href="http://perlsphere.net">Perlsphere</a></li>
+        <li><a href="http://planet.perl.org">Planet Perl</a></li>
+	<li><a href="http://news.perlfoundation.org/">TPF news</a></li>
+        <li><a href="http://use.perl.org">Use Perl</a></li>
+              </ul>
+            </div>            
+            <div class="side_panel links_panel">
+              <p>See also</p>
+              <ul>
+        <li><a href="http://search.cpan.org">CPAN</a></li>
+        <li><a href="http://www.perl.org">Perl.org</a></li>
+        <li><a href="http://www.perl.com">Perl.com</a></li>
+        <li><a href="http://www.perlfoundation.org/perl5/index.cgi">Perl 5 Wiki</a></li>
+        <li><a href="http://jobs.perl.org">Perl Jobs</a></li>
+        <li><a href="http://www.pm.org">Perl Mongers</a></li>
+        <li><a href="http://www.perlmonks.org">Perl Monks</a></li>
+              </ul>
+            </div>
+            <div class="side_panel links_panel">
+              <p>Contact</p>
+              <ul>
+                <li><a href="http://perl.jonallen.info">Site designed and maintained by Jon&nbsp;Allen&nbsp;(JJ)</a>
+                <li><a href="http://perl.jonallen.info">http://perl.jonallen.info</a>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="centre_column">
+          <div id="content_header">
+            <div id="title_bar">
+              <div id="page_name">
+                <h1>[% pagename %]</h1>
+              </div>
+              <div id="perl_version">
+                Perl 5 version [% perl5_version %] documentation
+              </div>
+              <div id="page_links">
+                <a href="#" onClick="toolbar.goToTop();return false;">Go to top</a>
+		[% IF page_index %]
+                  &bull; <a href="#" id="page_index_toggle">Show page index</a>
+		[% END %]
+		[% IF (pdf && pdf_link) %]
+                  &bull; <a href="[% path %][% pdf_link %]">Download PDF</a>
+		[% END %]
+              </div>
+            </div>
+            <div id="breadcrumbs">
+              [% INCLUDE breadcrumb.tt %]
+            </div>
+          </div>
+          <div id="content_body">
+	    <!--[if lt IE 7]>
+ <div class="noscript">
+   <p>
+     <strong>It looks like you're using Internet Explorer 6. This is a very old
+     browser which does not offer full support for modern websites.</strong>
+   </p>
+   <p>
+     Unfortunately this means that this website will not work on
+     your computer.
+   </p>
+   <p>
+     Don't miss out though! To view the site (and get a better experience from
+     many other websites), simply upgrade to
+     <a href="http://www.microsoft.com/windows/Internet-explorer/default.aspx">Internet
+Explorer 8</a>
+     or download an alternative browser such as
+     <a href="http://www.mozilla.com/en-US/firefox/firefox.html">Firefox</a>,
+     <a href="http://www.apple.com/safari/download/">Safari</a>, or
+     <a href="http://www.google.co.uk/chrome">Google Chrome</a>.
+   </p>
+   <p>
+     All of these browsers are free. If you're using a PC at work, you may
+     need to contact your IT administrator.
+   </p>
+ </div>
+<![endif]-->
+	    <noscript>
+	      <div class="noscript">
+	      <p>
+                <strong>Please note: Many features of this site require JavaScript. You appear to have JavaScript disabled,
+	        or are running a non-JavaScript capable web browser.</strong>
+	      </p>
+	      <p>
+		To get the best experience, please enable JavaScript or download a modern web browser such as <a href="http://www.microsoft.com/windows/Internet-explorer/default.aspx">Internet Explorer 8</a>, <a href="http://www.mozilla.com/en-US/firefox/firefox.html">Firefox</a>, <a href="http://www.apple.com/safari/download/">Safari</a>, or <a href="http://www.google.co.uk/chrome">Google Chrome</a>.
+              </p>
+	      </div>
+	    </noscript>
+	    <div id="from_search"></div>
+            [% INCLUDE $content_tt %]
+	    &nbsp;
+          </div>
+          <div id="content_footer">
+          </div>
+        </div>
+        <div id="right_column">
+          <div class="side_group">
+	    [% UNLESS download %]
+              [% INCLUDE perlversion.tt %]
+	    [% END %]
+            <div class="side_panel tools_panel">
+              <p>Recently read</p>
+              <div id="recent_pages"></div>
+            </div>
+            <div class="side_panel tools_panel">
+              <p>Tools</p>
+              <ul>
+		<li><a href="[% path %]preferences.html">Preferences</a>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      
+      <div id="footer">
+	<div id="footer_content">
+	  
+	</div>
+      </div>
+      
+    </div>
+      <script language="JavaScript" src="[% path %]combined-20090729.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+  perldoc.setPath([% pagedepth %]);
+  perldoc.pageName    = '[% pagename %]';
+  perldoc.pageAddress = '[% pageaddress %]';
+  perldoc.contentPage = [% contentpage or 0 %];
+</script>
+    [% UNLESS download %]
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTrackerJJ = _gat._getTracker("UA-1892152-2");
+pageTrackerJJ._initData();
+pageTrackerJJ._trackPageview();
+var pageTrackerRobert = _gat._getTracker("UA-50555-3");
+pageTrackerRobert._initData();
+pageTrackerRobert._trackPageview();
+</script>
+    [% END %]
+  </body>
+</html>

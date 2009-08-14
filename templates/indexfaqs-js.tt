@@ -1,0 +1,3 @@
+perldocSearch.indexData.faqs = new Array (
+[% FOREACH faq IN faqs %]  [[% faq.section %], "[% faq.name %]"][% UNLESS loop.last %],[% END %][% END %]
+);

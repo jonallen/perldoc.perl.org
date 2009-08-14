@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>{$pagename} - {$site_title}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Language" content="en-gb" />
+  <link href="{$path}css.css" rel="stylesheet" rev="stylesheet" type="text/css" media="screen" />
+  <link rel="search" type="application/opensearchdescription+xml" title="perldoc.perl.org" href="{$path}opensearch.xml">
+</head>
+
+<script language="JavaScript" type="text/javascript" src="{$path}label.js"></script>
+
+<script language="JavaScript">
+  pageDepth = {$pagedepth};
+  setPath();
+</script>
+
+<body onLoad="showToolbars();loadLabels()">
+
+<div id="pageHeader">
+  <div id="pageHeaderLogo">
+    <img src="{$path}onion.gif">
+  </div>
+  <div id="pageHeaderText">
+    <a href="{$site_href}">{$site_title}</a>
+  </div>
+</div>
+
+<div id="pageBody">
+  <div id="left">
+    <div id="leftContent">
+      <div id="leftClose">
+        <a href="#" onClick="closeLeft()" title="Hide navigation" onmouseover="leftCloseIcon.src='{$path}close_purple.gif';" onmouseout="leftCloseIcon.src='{$path}close_blue.gif';"><img src="{$path}close_blue.gif" name="leftCloseIcon" id="leftCloseIcon" border=0></a>
+      </div>
+      <h1>Manual:</h1>
+      <ul>
+        <li><a href="{$path}index-overview.html">Overview</a></li>
+        <li><a href="{$path}index-tutorials.html">Tutorials</a></li>
+        <li><a href="{$path}index-faq.html">FAQs</a></li>
+        <li><a href="{$path}index-history.html">History / Changes</a></li>
+        <li><a href="{$path}index-licence.html">Licence</a></li>
+      </ul>
+      <h2>Reference:</h2>
+      <ul>
+        <li><a href="{$path}index-language.html">Language</a></li>
+        <li><a href="{$path}index-functions.html">Functions</a></li>
+        <li><a href="{$path}perlop.html">Operators</a></li>
+        <li><a href="{$path}perlvar.html">Special variables</a></li>
+        <li><a href="{$path}index-pragmas.html">Pragmas</a></li>
+        <li><a href="{$path}index-modules-A.html">Core modules</a></li>
+        <li><a href="{$path}index-utilities.html">Utilities</a></li>
+        <li><a href="{$path}index-internals.html">Internals</a></li>
+        <li><a href="{$path}index-platforms.html">Platform specific</a></li>
+      </ul>
+      <h2>Perl news and blogs:</h2>
+      <ul>
+        <li><a href="http://perlbuzz.com">Perl Buzz</a></li>
+        <li><a href="http://perlsphere.net">Perlsphere</a></li>
+        <li><a href="http://planet.perl.org">Planet Perl</a></li>
+	<li><a href="http://news.perlfoundation.org/">TPF news</a></li>
+        <li><a href="http://use.perl.org">Use Perl</a></li>
+      </ul>
+      <h2>See also:</h2>
+      <ul>
+        <li><a href="http://search.cpan.org">CPAN</a></li>
+        <li><a href="http://www.perl.org">Perl.org</a></li>
+        <li><a href="http://www.perl.com">Perl.com</a></li>
+        <li><a href="http://www.perlfoundation.org/perl5/index.cgi">Perl 5 Wiki</a></li>
+        <li><a href="http://jobs.perl.org">Perl Jobs</a></li>
+        <li><a href="http://www.pm.org">Perl Mongers</a></li>
+        <li><a href="http://www.perlmonks.org">Perl Monks</a></li>
+      </ul>
+      <h2>Contact:</h2>
+      <ul>
+        <li>Site maintained by<br><a href="http://perl.jonallen.info">Jon Allen</a>
+            (<a href="http://perl.jonallen.info">JJ</a>)</li>
+        <li class="spaced">Last updated on<br>{$last_update}</li>
+	<li class="spaced">See the <a href="http://perl.jonallen.info/projects/perldoc">project page</a> for
+	more details</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="center">  
+    <div id="centerContent">
+      <div id="contentHeader">
+        <div id="contentHeaderLeft"><a href="#" onClick="showLeft()">Show navigation</a></div>
+        <div id="contentHeaderCentre">-- Perl {$perl_version} documentation --</div>
+        <div id="contentHeaderRight"><a href="#" onClick="showRight()">Show toolbar</a></div>
+      </div>
+      <div id="breadCrumbs">{$breadcrumb}</div>
+      <script language="JavaScript">fromSearch();</script>
+      <div id="contentBody">{$content}</div>
+      <div id="contentFooter"><a href="http://www.perl.org"><img src="{$path}perlpowered.png" border=0></a></div>
+    </div>
+  </div>
+
+  <div id="right">
+    <div id="rightContent">
+      <div id="leftClose">
+        <a href="#" onClick="closeRight()" title="Hide toolbar" onmouseover="rightCloseIcon.src='{$path}close_purple.gif';" onmouseout="rightCloseIcon.src='{$path}close_blue.gif';"><img src="{$path}close_blue.gif" name="rightCloseIcon" id="rightCloseIcon" border=0></a>
+      </div>
+      <h1>Search:</h1>
+      <p>
+        <form action="{$path}search.html" name="perldoc_search">
+	  <input type="text" name="q" size="10" class="grey"><br>
+	  <!--<select name="r"><option value="1" selected>Go to top result<option value="0">Show results list</select>-->
+	</form>
+      </p>
+      <script language="JavaScript" type="text/javascript" src="/perl-version.js"></script>
+      <h2>Labels:</h2>
+      <p>
+        <a href="#" onClick="addLabel('{$pagename}','{$pageaddress}')">Add this page</a>
+      </p>
+      <div class="labels" id="labels">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTrackerJJ = _gat._getTracker("UA-1892152-2");
+pageTrackerJJ._initData();
+pageTrackerJJ._trackPageview();
+var pageTrackerRobert = _gat._getTracker("UA-50555-3");
+pageTrackerRobert._initData();
+pageTrackerRobert._trackPageview();
+</script>
+
+</body>
+</html>

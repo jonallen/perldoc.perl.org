@@ -1,0 +1,32 @@
+<script language="JavaScript" src="combined-20090729.js"></script>
+<script language="JavaScript" src="preferences.js"></script>
+
+<h1>Preferences</h1>
+<p>Customise the behaviour of <strong>perldoc.perl.org</strong>.</p>
+
+<form class="prefs" name="perldoc_settings" id="perldoc_settings" onsubmit="perldocPrefs.save()">
+  <fieldset>
+    <legend>Toolbar</legend>
+    <div class="form_section">Positioning</div>
+    <input id="toolbar_fixed" name="toolbar_position" value="fixed" type="radio">
+      <label for="toolbar_fixed">
+        <strong>Fixed</strong><br>
+        Keep the toolbar fixed to the top of the browser window
+      </label>
+    <br>
+    <input id="toolbar_standard" name="toolbar_position" value="standard" type="radio">
+      <label for="toolbar_standard">
+        <strong>Standard</strong><br>
+        Scroll the toolbar with the page content
+      </label>
+  </fieldset>
+  
+  <div class="form_buttons">
+    <input type="button" value="Cancel" onclick="perldocPrefs.cancel();">
+    <input type="button" value="Save settings" onclick="perldocPrefs.save()">
+  </div>
+</form>
+
+<script language="JavaScript">
+  perldocPrefs.load();
+</script>
