@@ -137,6 +137,17 @@ sub view_head2 {
 
 #--------------------------------------------------------------------------
 
+sub view_head3 {
+  my ($self,$head3) = @_;
+  my $title = $head3->title->present($self);
+  my $anchor = escape($head3->title->present('Pod::POM::View::Text'));
+  return qq{<a name="$anchor"></a><h3>$title</h3>\n}.
+         $head3->content->present($self);
+}
+
+
+#--------------------------------------------------------------------------
+
 sub view_over {
   my ($self, $over) = @_;
   my ($start, $end, $strip);
@@ -231,6 +242,9 @@ sub view_seq_link {
   #  say "Link: $link, Text: $text, Inferred: $inferred, Page: $page, Section: $section, Type: $type\n";
   #}
   if ($type eq 'pod') {
+    $section  && $section  =~ s/^&quot;(.*?)&quot;$/$1/;
+    $inferred && $inferred =~ s/&quot;(.*?)&quot;/$1/;
+    
     my $href;
     if ($page && $section && $page eq 'perlfunc') {
       (my $function = $section) =~ s/(-?[a-z]+).*/$1/i;
