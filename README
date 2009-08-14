@@ -10,9 +10,17 @@ which holds the core documentaion for Perl in HTML and PDF formats.
 
 USAGE
 
-  perl build-perldoc-pdf.pl --output-path /path/to/output
-  perl build-perldoc-static.pl --output-path /path/to/output
-  perl build-perldoc-html.pl --output-path /path/to/output
+  perl build-perldoc-pdf.pl    --output-path /path/to/output [options]
+  perl build-perldoc-static.pl --output-path /path/to/output [options]
+  perl build-perldoc-html.pl   --output-path /path/to/output [options]
+  perl build-perldoc-js.pl     --output-path /path/to/output [options]
+
+where [options] are:
+
+  --perl /path/to/perl  - specify Perl interpreter to document
+  --download            - produce a downloadable version of the documentation
+  --pdf                 - include PDF download links (default)
+  --nopdf               - do not include PDF download links
 
 
 NOTES
@@ -27,7 +35,7 @@ to write a more generic tool.
 
 LICENSE
 
-Unless stated otherwise, all files are Copyright (C) 2008 Jon Allen and
+Unless stated otherwise, all files are Copyright (C) Jon Allen and
 distributed under the terms of the Artistic License version 2.0.
 
 The Perl Onion logo is a trademark of The Perl Foundation. See
