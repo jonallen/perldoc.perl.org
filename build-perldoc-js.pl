@@ -99,7 +99,7 @@ foreach my $section (Perldoc::Section::list()) {
   }
 }
 
-my $jsfile   = catfile($Perldoc::Config::option{output_path},'indexPod.js');
+my $jsfile   = catfile($Perldoc::Config::option{output_path},'static','indexPod.js');
 my $template = Template->new(INCLUDE_PATH => TT_INCLUDE_PATH);
 $template->process('indexpod-js.tt',{%Perldoc::Config::option, pods=>\@pods},$jsfile) || die $template->error;
 
@@ -119,7 +119,7 @@ foreach my $page (Perldoc::Section::pages('pragmas'), grep {/^[A-Z]/} (Perldoc::
   }
 }
 
-$jsfile = catfile($Perldoc::Config::option{output_path},'indexModules.js');
+$jsfile = catfile($Perldoc::Config::option{output_path},'static','indexModules.js');
 $template->process('indexmodules-js.tt',{%Perldoc::Config::option, modules=>\@modules},$jsfile) || die $template->error;
 
 
@@ -136,7 +136,7 @@ foreach my $function (Perldoc::Function::list()) {
   push @functions,{name=>$function, description=>$description};
 }
 
-$jsfile = catfile($Perldoc::Config::option{output_path},'indexFunctions.js');
+$jsfile = catfile($Perldoc::Config::option{output_path},'static','indexFunctions.js');
 $template->process('indexfunctions-js.tt',{%Perldoc::Config::option, functions=>\@functions},$jsfile) || die $template->error;
 
 
@@ -159,7 +159,7 @@ foreach my $section (1..9) {
   }
 }
 
-$jsfile = catfile($Perldoc::Config::option{output_path},'indexFAQs.js');
+$jsfile = catfile($Perldoc::Config::option{output_path},'static','indexFAQs.js');
 $template->process('indexfaqs-js.tt',{%Perldoc::Config::option, faqs=>\@faqs},$jsfile) || die $template->error;
 
 

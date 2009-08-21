@@ -335,7 +335,7 @@ var perldocSearch = {
     loaded: {},
     load: function() {
       for (var i = 0, len = arguments.length; i < len; i++) {
-        var filename = arguments[i];
+        var filename = 'static/' + arguments[i];
         if (!this.loaded[filename]) {
           if (!this.request) {
             if (window.XMLHttpRequest) this.request = new XMLHttpRequest; else if (window.ActiveXObject) {

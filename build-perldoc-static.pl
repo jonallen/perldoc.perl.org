@@ -4,7 +4,8 @@ use strict;
 use warnings;
 use File::Basename;
 use File::Find;
-use File::Spec::Functions qw/catfile/;
+use File::Spec::Functions qw/catfile catdir/;
+use File::Path;
 use FindBin qw/$Bin/;
 use Getopt::Long;
 use Shell qw/cp/;
@@ -101,8 +102,11 @@ $Perldoc::Config::option{last_update} = "$date $month $year";
 
 #--Copy static files------------------------------------------------------
 
-cp('-r', "$Bin/static/*",     $Perldoc::Config::option{output_path});
-cp('-r', "$Bin/javascript/*", $Perldoc::Config::option{output_path});
+my $static_path = catdir($Perldoc::Config::option{output_path},'static');
+mkpath($static_path) unless -d $static_path;
+
+cp('-r', "$Bin/static/*",     $static_path);
+cp('-r', "$Bin/javascript/*", $static_path);
 
 
 #--Process static html files with template--------------------------------
