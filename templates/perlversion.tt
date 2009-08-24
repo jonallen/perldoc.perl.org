@@ -10,7 +10,8 @@ function selectPerlVersion(element) {
 <select id="perl_version_select" name="version-chooser" onChange="selectPerlVersion(this)">
   <option selected>Select...
   <option>Perl 5 version 10
-    <option value="/index.html">&nbsp;&nbsp;&bull;&nbsp;Perl 5.10.0
+    <option value="/index.html">&nbsp;&nbsp;&bull;&nbsp;Perl 5.10.1
+    <option value="/5.10.0/index.html">&nbsp;&nbsp;&bull;&nbsp;Perl 5.10.0
   <option>
   <option>Perl 5 version 8
     <option value="/5.8.9/index.html">&nbsp;&nbsp;&bull;&nbsp;Perl 5.8.9

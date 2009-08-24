@@ -39,7 +39,7 @@ our @section_data = (
                  perllexwarn perldebug perlvar perlre
                  perlreref perlref perlform perlobj perltie
                  perldbmfilter perlipc perlfork perlnumber
-                 perlport perllocale perluniintro perlunicode
+                 perlperf perlport perllocale perluniintro perlunicode
                  perlebcdic perlsec perlmod perlmodlib
                  perlmodstyle perlmodinstall perlnewmod
                  perlcompile perlfilter perlglossary CORE
@@ -48,8 +48,8 @@ our @section_data = (
   {
     id    => 'internals',
     name  => 'Internals and C language interface',
-    pages => [qw/perlembed perldebguts perlxs perlxstut
-                 perlclib perlguts perlcall perlapi perlintern
+    pages => [qw/perlembed perldebguts perlxs perlxstut perlrepository
+                 perlclib perlguts perlcall perlapi perlintern perlmroapi
                  perliol perlapio perlhack perlreguts perlreapi/]
   },
   { 
@@ -73,7 +73,7 @@ our @section_data = (
     name  => 'Platform specific',
     pages => [qw/perlaix perlamiga perlapollo perlbeos perlbs2000
                  perlce perlcygwin perldgux perldos perlepoc
-                 perlfreebsd perlhpux perlhurd perlirix perllinux
+                 perlfreebsd perlhaiku perlhpux perlhurd perlirix perllinux
                  perlmachten perlmacos perlmacosx perlmint perlmpeix
                  perlnetware perlos2 perlos390 perlos400
                  perlplan9 perlqnx perlsolaris perlsymbian perltru64 perluts
@@ -82,10 +82,10 @@ our @section_data = (
   { 
     id        => 'pragmas',
     name      => 'Pragmas',
-    pages     => [qw/attributes attrs autouse base bigint bignum 
+    pages     => [qw/attributes attrs autodie autouse base bigint bignum 
                      bigrat blib bytes charnames constant diagnostics
                      encoding feature fields filetest if integer less lib
-                     locale mro open ops overload re sigtrap sort strict
+                     locale mro open ops overload overloading parent re sigtrap sort strict
                      subs threads threads::shared utf8 vars vmsish
                      warnings warnings::register/]
   },

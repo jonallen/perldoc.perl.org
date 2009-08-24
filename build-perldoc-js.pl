@@ -8,12 +8,12 @@ use File::Path;
 use File::Spec::Functions;
 use FindBin qw/$Bin/;
 use Getopt::Long;
-use Pod::POM;
-use Pod::POM::View::Text;
 use Template;
 
 use lib "$Bin/lib";
 use Perldoc::Config;
+use Pod::POM;
+use Pod::POM::View::Text;
 
 use constant TRUE  => 1;
 use constant FALSE => 0;
