@@ -19,7 +19,7 @@ var perldocSearch = {
   run: function(args) {    
     if (args.q) {
       args.q = args.q.replace(/\+/g," ");
-      $('results_title').innerHTML = 'Search results for query "' + args.q + '"';
+      $('results_title').innerHTML = 'Search results for query "' + encodeURI(args.q) + '"';
       if (args.r && args.r == "no") {
         perldocSearch.doFullSearch(args.q);
       } else {

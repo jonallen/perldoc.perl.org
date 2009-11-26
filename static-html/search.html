@@ -40,7 +40,7 @@ To perform a full-text search of the documentation, please repeat your query usi
       <td>
 	  <script>
 	    if (args.q) {
-	      document.write('<INPUT TYPE=text name=q size=31 maxlength=255 value="' + args.q + '">');
+	      document.write('<INPUT TYPE=text name=q size=31 maxlength=255 value="' + encodeURI(args.q) + '">');
 	    } else {
 	      document.write('<INPUT TYPE=text name=q size=31 maxlength=255 value="">');
 	    }
