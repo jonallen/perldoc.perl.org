@@ -1,0 +1,149 @@
+/* @override http://localhost:3323/static/exploreperl.css */
+
+
+
+/* @group Explore */
+
+div#explorePerl {
+	opacity: 0;
+	Xfilter:alpha(opacity=0);
+	position: absolute;
+	z-index: 3;
+	top: 68px;
+	right: 13px;
+	font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+	visibility: hidden;
+}
+
+div#explorePerl_top {
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='crop');
+	background-image: url(explore_tm.png);
+	margin-right: 83px;
+	margin-left: 11px;
+	height: 27px;
+}
+
+div#explorePerl_tl {
+	width: 11px;
+	height: 27px;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='crop');
+	background-image: url(explore_tl.png);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+div#explorePerl_tr {
+	width: 83px;
+	height: 27px;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='crop');
+	background-image: url(explore_tr.png);
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+div#explorePerl_mid {
+	overflow: hidden;
+}
+
+div#explorePerl_ml {
+	float: left;
+	background-image: url(explore_c.png);
+	Xfilter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='crop');
+}
+
+div#explorePerl_mr {
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='crop');
+	background-image: url(explore_mr.png);
+	width: 24px;
+	float: left;
+	padding-bottom: 2000px;
+	margin-bottom: -2000px;
+}
+
+div#explorePerl_bot {
+	height: 31px;
+	margin-left: 26px;
+	margin-right: 31px;
+	background-image: url(explore_bm.png);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='crop');
+	clear: both;
+}
+
+div#explorePerl_bl {
+	width: 26px;
+	height: 31px;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='scale');
+	background-image: url(explore_bl.png);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+div#explorePerl_br {
+	width: 31px;
+	height: 31px;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='1x1.png', sizingMethod='scale');
+	background-image: url(explore_br.png);
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+/* @group Links */
+
+ul.explorePerl_l1 {
+	list-style-type: none;
+	Xfloat: left;
+	font-size: .9em;
+	Xborder: 2px solid lime;
+	padding: 0 0 4px 25px;
+	margin-top: 4px;
+}
+
+ul.explorePerl_l1 li {
+	float: left;
+	color: #e4e4e4;
+	font-size: .8em;
+	text-align: left;
+	font-weight: bold;
+	padding-bottom: 0;
+	padding-right: 20px;
+}
+
+ul.explorePerl_l1 li span.explorePerl_heading {
+	margin-bottom: 4px;
+	display: block;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #515151;
+}
+
+ul.explorePerl_l2 {
+	list-style-type: none;
+	text-align: left;
+	margin: 3px 12px 0 0;
+	padding: 0 0 7px;
+}
+
+ul.explorePerl_l2 li {
+	float: none;
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+}
+
+ul.explorePerl_l2 li a {
+	text-decoration: none;
+	color: #9e9e9e;
+}
+
+ul.explorePerl_l2 li a:hover {
+	color: #e0e0e0;
+}
+
+/* @end */
+
+/* @end */
