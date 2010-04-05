@@ -5,19 +5,19 @@
 [% END %]
 
 [% IF page_index %]
-  <div id="page_index">
-    <div id="page_index_header">
-      <div id="page_index_close"><a href="#" onClick="pageIndex.hide();return false;"></a></div>
-      <div id="page_index_title"><span class="page_index_top">Page index</span></div>
-      <div id="page_index_topright"></div>
+  <div id="page_index" class="hud_container">
+    <div id="page_index_header" class="hud_header">
+      <div id="page_index_close" class="hud_close"><a href="#" onClick="pageIndex.hide();return false;"></a></div>
+      <div id="page_index_title" class="hud_title"><span class="hud_span_top">Page index</span></div>
+      <div id="page_index_topright" class="hud_topright"></div>
     </div>
-    <div id="page_index_content">
+    <div id="page_index_content" class="hud_content">
       [% page_index %]
     </div>
-    <div id="page_index_footer">
-      <div id="page_index_bottomleft"></div>
-      <div id="page_index_bottom"><span class="page_index_bottom"></span></div>
-      <div id="page_index_resize"></div>
+    <div id="page_index_footer" class="hud_footer">
+      <div id="page_index_bottomleft" class="hud_bottomleft"></div>
+      <div id="page_index_bottom" class="hud_bottom"><span class="hud_span_bottom"></span></div>
+      <div id="page_index_resize" class="hud_resize"></div>
     </div>
   </div>
 [% END %]

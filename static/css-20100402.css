@@ -1,5 +1,7 @@
 /* @override http://localhost:3323/static/css-20100402.css */
 
+/* @override http://localhost:3323/static/css-20100402.css */
+
 /* @override http://localhost:3323/css-20090810.css */
 
 /* @override http://localhost:3323/css-20090730.css */
@@ -180,6 +182,7 @@ div#footer_end {
 	width: 946px;
 	height: 42px;
 	clear: both;
+	background-color: #004065;
 }
 
 /* @group Address */
@@ -289,6 +292,7 @@ ul.f2 li a:hover {
 
 select#perl_version_select {
 	margin: 5px 8px 11px;
+	width: 121px;
 }
 
 /* @end */
@@ -482,10 +486,10 @@ div#content_body h2 {
 }
 
 div#content_body h3 {
-	font: 1.1em "ITC Garamond", Garamond, Georgia, "Times New Roman", Times, serif;
+	font: 1.3em "ITC Garamond", Garamond, Georgia, "Times New Roman", Times, serif;
 	color: #36497d;
-	margin-top: 6px;
-	margin-bottom: 6px;	
+	margin-top: 9px;
+	margin-bottom: 3px;	
 }
 
 div#content_body p {
@@ -741,6 +745,10 @@ div#content_body div.hud_content a:link {
 	color: #a6a6a6;
 }
 
+div#content_body div.hud_content a:visited {
+	color: #a6a6a6;
+}
+
 div#content_body div.hud_content {
 	color: #a6a6a6;
 }
@@ -760,8 +768,8 @@ span.hud_span_bottom {
 }
 
 div#recent_pages_content {
-	width: 100px;
-	height: 180px;
+	width: 170px;
+	height: 200px;
 }
 
 /* @end */

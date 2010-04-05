@@ -5,7 +5,8 @@
   <title>[% pagename %] - [% site_title %]</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <meta http-equiv="Content-Language" content="en-gb">
-  <link href="[% IF download %][% path %][% ELSE %]/[% END %]static/css-20090925.css" rel="stylesheet" rev="stylesheet" type="text/css" media="screen">
+  <link href="[% IF download %][% path %][% ELSE %]/[% END %]static/css-20100402.css" rel="stylesheet" rev="stylesheet" type="text/css" media="screen">
+  <link href="[% IF download %][% path %][% ELSE %]/[% END %]static/exploreperl.css" rel="stylesheet" rev="stylesheet" type="text/css">
 </head>
 
 <body onLoad="perldoc.startup();" onPageShow="if (event.persisted) perldoc.startup();">
@@ -15,17 +16,30 @@
 	<div id="homepage_link">
 	  <a href="[% path %]index.html"></a>
 	</div>
-        <div id="search_form">
-          <form action="[% path %]search.html" method="GET" id="search">
-            <input type="text" name="q" id="search_box" alt="Search">
-          </form>
-        </div>
+	<div id="strapline">
+	  Perl Programming Documentation
+	</div>
+	<div id="download_link" class="download">
+	  <a href="http://www.perl.org/get.html">Download Perl</a>
+	</div>
+	<div id="explore_link" class="download">
+	  <a id="explore_anchor" href="#">Explore</a>
+	</div>
       </div>
       
       <div id="body">
         <div id="left_column">
           <div class="side_group">
-            <div class="side_panel doc_panel">
+            [% UNLESS download %]
+	      <div class="side_panel doc_panel">
+		<p>Perl version</p>
+		[% INCLUDE perlversion.tt %]
+		<ul>
+		  <li><a href="[% path %]preferences.html">Preferences</a>
+		</ul>
+	      </div>
+            [% END %]
+	    <div class="side_panel doc_panel">
               <p>Manual</p>
               <ul>
                 <li><a href="[% path %]index-overview.html">Overview</a>
@@ -44,7 +58,7 @@
                 <li><a href="[% path %]perlvar.html">Special Variables</a>
                 <li><a href="[% path %]index-pragmas.html">Pragmas</a>
                 <li><a href="[% path %]index-utilities.html">Utilities</a>
-                <li><a href="[% path %]index-internals.html">Internals</a></li>
+                <li><a href="[% path %]index-internals.html">Internals</a>
                 <li><a href="[% path %]index-platforms.html">Platform Specific</a>
               </ul>
             </div>
@@ -70,41 +84,14 @@
                 [% END %]
               </ul>
             </div>
-          </div>
-          <div class="side_group">
-            <div class="side_panel links_panel">
-              <p>News / Blogs</p>
-              <ul>
-        <li><a href="http://perlbuzz.com">Perl Buzz</a></li>
-        <li><a href="http://ironman.enlightenedperl.org">Perl Iron Man</a></li>
-        <li><a href="http://perlsphere.net">Perlsphere</a></li>
-        <li><a href="http://planet.perl.org">Planet Perl</a></li>
-	<li><a href="http://news.perlfoundation.org/">TPF news</a></li>
-        <li><a href="http://use.perl.org">Use Perl</a></li>
-              </ul>
-            </div>            
-            <div class="side_panel links_panel">
-              <p>See also</p>
-              <ul>
-        <li><a href="http://search.cpan.org">CPAN</a></li>
-        <li><a href="http://www.perl.org">Perl.org</a></li>
-        <li><a href="http://www.perl.com">Perl.com</a></li>
-        <li><a href="http://www.perlfoundation.org/perl5/index.cgi">Perl 5 Wiki</a></li>
-        <li><a href="http://jobs.perl.org">Perl Jobs</a></li>
-        <li><a href="http://www.pm.org">Perl Mongers</a></li>
-        <li><a href="http://www.perlmonks.org">Perl Monks</a></li>
-              </ul>
-            </div>
-            <div class="side_panel links_panel">
-              <p>Contact</p>
-              <ul>
-                <li><a href="http://perl.jonallen.info">Site designed and maintained by Jon&nbsp;Allen&nbsp;(JJ)</a>
-                <li><a href="http://perl.jonallen.info">http://perl.jonallen.info</a>
-              </ul>
-              <ul>
-                <li><a href="http://perl.jonallen.info/projects/perldoc">View the project page and FAQs</a>
-              </ul>
-            </div>
+            [% IF download %]
+	      <div class="side_panel doc_panel">
+		<p>Tools</p>
+		<ul>
+		  <li><a href="[% path %]preferences.html">Preferences</a>
+		</ul>
+	      </div>
+            [% END %]
           </div>
         </div>
         <div id="centre_column">
@@ -116,15 +103,23 @@
               <div id="perl_version">
                 Perl 5 version [% perl5_version %] documentation
               </div>
-              <div id="page_links">
+              <div class="page_links" id="page_links_top">
                 <a href="#" onClick="toolbar.goToTop();return false;">Go to top</a>
-		[% IF page_index %]
-                  &bull; <a href="#" id="page_index_toggle">Show page index</a>
-		[% END %]
 		[% IF (pdf && pdf_link) %]
                   &bull; <a href="[% path %][% pdf_link %]">Download PDF</a>
 		[% END %]
               </div>
+	      <div class="page_links" id="page_links_bottom">
+		[% IF page_index %]
+                  <a href="#" id="page_index_toggle">Show page index</a> &bull;
+		[% END %]
+                <a href="#" id="recent_pages_toggle">Show recent pages</a>		
+	      </div>
+	      <div id="search_form">
+		<form action="[% path %]search.html" method="GET" id="search">
+		  <input type="text" name="q" id="search_box" alt="Search">
+		</form>
+	      </div>
             </div>
             <div id="breadcrumbs">
               [% INCLUDE breadcrumb.tt %]
@@ -168,6 +163,22 @@ Explorer 8</a>
               </p>
 	      </div>
 	    </noscript>
+
+	    <div id="recent_pages" class="hud_container">
+	      <div id="recent_pages_header" class="hud_header">
+		<div id="recent_pages_close" class="hud_close"><a href="#" onClick="recentPages.hide();return false;"></a></div>
+		<div id="recent_pages_title" class="hud_title"><span class="hud_span_top">Recently read</span></div>
+		<div id="recent_pages_topright" class="hud_topright"></div>
+	      </div>
+	      <div id="recent_pages_content" class="hud_content">
+	      </div>
+	      <div id="recent_pages_footer" class="hud_footer">
+		<div id="recent_pages_bottomleft" class="hud_bottomleft"></div>
+		<div id="recent_pages_bottom" class="hud_bottom"><span class="hud_span_bottom"></span></div>
+		<div id="recent_pages_resize" class="hud_resize"></div>
+	      </div>
+	    </div>
+  
 	    <div id="from_search"></div>
             [% INCLUDE $content_tt %]
 	    &nbsp;
@@ -175,39 +186,69 @@ Explorer 8</a>
           <div id="content_footer">
           </div>
         </div>
-        <div id="right_column">
-          <div class="side_group">
-	    [% UNLESS download %]
-              [% INCLUDE perlversion.tt %]
-	    [% END %]
-            <div class="side_panel tools_panel">
-              <p>Recently read</p>
-              <div id="recent_pages"></div>
-            </div>
-            <div class="side_panel tools_panel">
-              <p>Tools</p>
-              <ul>
-		<li><a href="[% path %]preferences.html">Preferences</a>
-              </ul>
-            </div>
-          </div>
-        </div>
         <div class="clear"></div>
       </div>
       
-      <div id="footer">
-	<div id="footer_content">
-	  
-	</div>
+    <div id="footer">
+      <div id="footer_content">
+        <div id="footer_strapline">
+          perldoc.perl.org - Official documentation for the Perl programming language
+        </div>
+        <div id="footer_links">
+          <div id="address">
+            <p class="name">Contact details</p>
+            <p class="address">
+	      Site maintained by <a href="http://perl.jonallen.info">Jon Allen (JJ)</a><br>
+	      See the <a href="http://perl.jonallen.info/projects/perldoc">project page</a> for more details
+	    </p>
+            <p class="contact">
+              Documentation maintained by the <a href="http://lists.cpan.org/showlist.cgi?name=perl5-porters">Perl 5 Porters</a>
+            </p>
+          </div>
+          <ul class="f1">
+            <li>Manual
+              <ul class="f2">
+                <li><a href="[% path %]index-overview.html">Overview</a>
+                <li><a href="[% path %]index-tutorials.html">Tutorials</a>
+                <li><a href="[% path %]index-faq.html">FAQs</a>
+                <li><a href="[% path %]index-history.html">Changes</a>
+              </ul>
+            <li>Reference
+              <ul class="f2">
+                <li><a href="[% path %]index-language.html">Language</a>
+                <li><a href="[% path %]index-functions.html">Functions</a>
+                <li><a href="[% path %]perlop.html">Operators</a>
+                <li><a href="[% path %]perlvar.html">Variables</a>
+              </ul>
+            <li>Modules
+              <ul class="f2">
+                <li><a href="[% path %]index-modules-A.html">Modules</a>
+                <li><a href="[% path %]index-pragmas.html">Pragmas</a>
+                <li><a href="[% path %]index-utilities.html">Utilities</a>
+              </ul>
+            <li>Misc
+              <ul class="f2">
+                <li><a href="[% path %]index-licence.html">License</a>
+                <li><a href="[% path %]index-internals.html">Internals</a>
+                <li><a href="[% path %]index-platforms.html">Platforms</a>
+              </ul>          </ul>
+          <div class="clear"></div>
+        </div>
       </div>
+      <div id="footer_end">
+      </div>
+    </div>
       
     </div>
-      <script language="JavaScript" src="[% IF download %][% path %][% ELSE %]/[% END %]static/combined-20090809.js" type="text/javascript"></script>
+      <script language="JavaScript" type="text/javascript" src="[% IF download %][% path %][% ELSE %]/[% END %]static/exploreperl.js"></script>
+      <script language="JavaScript" src="[% IF download %][% path %][% ELSE %]/[% END %]static/combined-20100403.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript">
   perldoc.setPath([% pagedepth %]);
   perldoc.pageName    = '[% pagename %]';
   perldoc.pageAddress = '[% pageaddress %]';
   perldoc.contentPage = [% contentpage or 0 %];
+  explorePerl.render();
+  explorePerl.addEvents('explore_anchor');
 </script>
     [% UNLESS download %]
 <script type="text/javascript">
