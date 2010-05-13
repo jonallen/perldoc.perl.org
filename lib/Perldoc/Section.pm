@@ -50,7 +50,7 @@ our @section_data = (
     name  => 'Internals and C language interface',
     pages => [qw/perlembed perldebguts perlxs perlxstut perlrepository
                  perlclib perlguts perlcall perlapi perlintern perlmroapi
-                 perliol perlapio perlhack perlreguts perlreapi/]
+                 perliol perlapio perlhack perlreguts perlreapi perlpolicy/]
   },
   { 
     id        => 'history',
