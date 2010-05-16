@@ -33,7 +33,7 @@
             [% UNLESS download %]
 	      <div class="side_panel doc_panel">
 		<p>Perl version</p>
-		[% INCLUDE perlversion.tt %]
+		<script language="JavaScript" type="text/javascript" src="/static/perlversion.js"></script>
 		<ul>
 		  <li><a href="[% path %]preferences.html">Preferences</a>
 		</ul>
