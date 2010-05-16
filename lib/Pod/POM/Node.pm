@@ -15,7 +15,7 @@
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: Node.pm 60 2009-03-20 12:41:35Z ford $
+#   $Id: Node.pm 88 2010-04-02 13:37:41Z ford $
 #
 #========================================================================
 
@@ -79,7 +79,7 @@ sub new {
 	no strict qw( refs );
         $attribs = \%{"$class\::ATTRIBS"} || [ ];
 	$accept  = \@{"$class\::ACCEPT"}  || [ ];
-	unless (defined (%{"$class\::ACCEPT"})) {
+	unless (%{"$class\::ACCEPT"}) {
 	    %{"$class\::ACCEPT"} = ( 
 		map { ( $_ => $NODES->{ $_ } ) } @$accept,
 	    );
@@ -185,7 +185,12 @@ sub present {
     my $type   = $self->{ type };
     my $method = "view_$type";
     DEBUG("presenting method $method to $view\n");
-    return $view->$method($self, @args);
+    my $txt = $view->$method($self, @args);
+    if ($view->can("encode")){
+        return $view->encode($txt);
+    } else {
+        return $txt;
+    }
 }
 
 

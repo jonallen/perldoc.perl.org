@@ -161,8 +161,8 @@ sub view_over {
     $strip = qr/^\s*\*\s*/;
   } elsif ($first_title =~ /^\s*\d+\.?\s*/) {
     # '=item 1.' or '=item 1 ' => <ol>
-    $start = "<ol>\n";
-    $end   = "</ol>\n";
+    $start = "<dl>\n";
+    $end   = "</dl>\n";
     $strip = qr/^\s*\d+\.?\s*/;
   } else {
     $start = "<ul>\n";
@@ -186,15 +186,24 @@ sub view_item {
   my $over  = ref $self ? $self->{ OVER } : \@OVER;
   my $title = $item->title();
   my $strip = $over->[-1];
+  my $start_tag = '<li>';
+  my $end_tag   = '</li>';
   if (defined $title) {
     $title = $title->present($self) if ref $title;
-    $title =~ s/$strip// if $strip;
+    $title =~ s/($strip)// if $strip;
+    if (defined $1) {
+      my $dt = $1;
+      if ($dt =~ /^\d+\.?/) {
+        $start_tag = "<dt>$dt</dt><dd>";
+        $end_tag   = "</dd>";
+      }
+    }
     if (length $title) {
       my $anchor = escape($item->title->present('Pod::POM::View::Text'));
       $title = qq{<a name="$anchor"></a><b>$title</b>};
     }
   }
-  return '<li>'."$title\n".$item->content->present($self)."</li>\n";
+  return $start_tag."$title\n".$item->content->present($self).$end_tag."\n";
 }
 
 
@@ -232,10 +241,18 @@ sub view_seq_link {
     return $link;
   }
   
-  $link =~ s!<code.*?>(.*?)</code>!$1!g;
-  $link =~ s!<a.*?>(.*?)</a>!$1!g;
+  #$link =~ s!<code.*?>(.*?)</code>!$1!g;
+  #$link =~ s!<a.*?>(.*?)</a>!$1!g;
+  
+  # Naively remove HTML tags from link text (tags screw up formatting...)
+  $link =~ s/<.*?>//sg;
   
   my ($text,$inferred,$page,$section,$type) = parselink($link);
+  
+  $inferred =~ s/"//sg if $inferred;
+  $section  = decode_entities($section) if $section;
+  $section  =~ s/^"(.*)"$/$1/ if $section;  
+
   #warn "$link at $document_name\n" if ($link =~ /perlvar\//);
   #{
   #  no warnings 'uninitialized';

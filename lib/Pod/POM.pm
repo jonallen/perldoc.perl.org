@@ -13,12 +13,13 @@
 #
 # COPYRIGHT
 #   Copyright (C) 2000-2009 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 2009 Andrew Ford.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: POM.pm 71 2009-03-27 16:24:19Z ford $
+#   $Id: POM.pm 88 2010-04-02 13:37:41Z ford $
 #
 #========================================================================
 
@@ -34,7 +35,7 @@ use Pod::POM::View::Pod;
 use vars qw( $VERSION $DEBUG $ERROR $ROOT $TEXTSEQ $DEFAULT_VIEW );
 use base qw( Exporter );
 
-$VERSION = '0.25';
+$VERSION = '0.27';
 $DEBUG   = 0 unless defined $DEBUG;
 $ROOT    = 'Pod::POM::Node::Pod';               # root node class
 $TEXTSEQ = 'Pod::POM::Node::Sequence';          # text sequence class
@@ -174,6 +175,18 @@ sub parse_text {
     $$line  = 1;
     $inpod  = 0;
 
+    my @encchunks = split /^(=encoding.*)/m, $text;
+    $text = shift @encchunks;
+    while (@encchunks) {
+        my($encline,$chunk) = splice @encchunks, 0, 2;
+        require Encode;
+        my($encoding) = $encline =~ /^=encoding\s+(\S+)/;
+        Encode::from_to($chunk, $encoding, "utf8");
+        Encode::_utf8_on($chunk);
+        # $text .= "xxx$encline";
+        $text .= $chunk;
+    }
+
 # patch from JJ    
 #    while ($text =~ /(?:(.*?)(\n{2,}))|(.+$)/sg) {
     while ($text =~ /(?:(.*?)((?:\s*\n){2,}))|(.+$)/sg) {
@@ -185,13 +198,6 @@ sub parse_text {
 	    if    ($type eq 'pod') { $inpod = 1; next }
 	    elsif ($type eq 'cut') { $inpod = 0; next }
 	    else                   { $inpod = 1 };
-
-            if ($self->{in_begin}) {
-              unless ($type eq 'end') {
-                $para = "$1$para";
-                $type = "text";
-              }
-            }
 
 	    if ($type eq 'meta') {
 		$self->{ META }
@@ -359,12 +365,12 @@ sub parse_sequence {
 	elsif (defined $3) {
 	    $rparen = $3;
 	    $rparen =~ s/^\s+//;
-	    if ($rparen eq $stack[-1]->[RPAREN]) {
+	    while ($rparen && $rparen =~ s/^$stack[-1]->[RPAREN]//) {
 		$cmd = $TEXTSEQ->new(pop(@stack))
 		    || return $self->error($TEXTSEQ->error());
 		push(@{ $stack[-1]->[CONTENT] }, $cmd);
 	    }
-	    else {
+	    if ($rparen) {
 		$self->warning((scalar @stack > 1 
 			      ? "expected '$stack[-1]->[RPAREN]' not '$rparen'"
 			      : "spurious '$rparen'"), $name, $line);

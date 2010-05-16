@@ -15,7 +15,7 @@
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: Pod.pm 61 2009-03-20 12:42:40Z ford $
+#   $Id: Pod.pm 77 2009-08-20 20:44:14Z ford $
 #
 #========================================================================
 
@@ -26,7 +26,7 @@ require 5.004;
 use strict;
 use Pod::POM::Nodes;
 use Pod::POM::View;
-use base qw( Pod::POM::View );
+use parent qw( Pod::POM::View );
 use vars qw( $VERSION $DEBUG $ERROR $AUTOLOAD $MARKUP );
 
 $VERSION = sprintf("%d.%02d", q$Revision: 1.3 $ =~ /(\d+)\.(\d+)/);

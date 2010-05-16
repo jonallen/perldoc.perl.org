@@ -15,7 +15,7 @@
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: Text.pm 34 2009-03-17 21:11:05Z ford $
+#   $Id: Text.pm 77 2009-08-20 20:44:14Z ford $
 #
 #========================================================================
 
@@ -25,7 +25,7 @@ require 5.004;
 
 use strict;
 use Pod::POM::View;
-use base qw( Pod::POM::View );
+use parent qw( Pod::POM::View );
 use vars qw( $VERSION $DEBUG $ERROR $AUTOLOAD $INDENT );
 use Text::Wrap;
 

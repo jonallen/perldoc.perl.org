@@ -15,7 +15,7 @@
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: HTML.pm 33 2009-03-17 21:10:42Z ford $
+#   $Id: HTML.pm 84 2009-08-20 21:07:00Z ford $
 #
 #========================================================================
 
@@ -25,9 +25,8 @@ require 5.004;
 
 use strict;
 use Pod::POM::View;
-use base qw( Pod::POM::View );
+use parent qw( Pod::POM::View );
 use vars qw( $VERSION $DEBUG $ERROR $AUTOLOAD );
-use HTML::Entities;
 use Text::Wrap;
 
 $VERSION = sprintf("%d.%02d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/);
@@ -209,7 +208,11 @@ sub view_textblock {
 
 sub view_verbatim {
     my ($self, $text) = @_;
-    $text = encode_entities($text);
+    for ($text) {
+	s/&/&amp;/g;
+	s/</&lt;/g;
+	s/>/&gt;/g;
+    }
     return "<pre>$text</pre>\n\n";
 }
 
@@ -367,7 +370,11 @@ sub view_seq_text {
      my ($self, $text) = @_;
 
      unless ($HTML_PROTECT) {
-	$text = encode_entities($text);
+	for ($text) {
+	    s/&/&amp;/g;
+	    s/</&lt;/g;
+	    s/>/&gt;/g;
+	}
      }
 
      $text =~ s{
@@ -394,6 +401,11 @@ sub view_seq_text {
      return $text;
 }
 
+sub encode {
+    my($self,$text) = @_;
+    require Encode;
+    return Encode::encode("ascii",$text,Encode::FB_XMLCREF());
+}
 
 1;
 

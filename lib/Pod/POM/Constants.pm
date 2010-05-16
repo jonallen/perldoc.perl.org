@@ -7,15 +7,17 @@
 #
 # AUTHOR
 #   Andy Wardley   <abw@kfs.org>
+#   Andrew Ford    <a.ford@ford-mason.co.uk>
 #
 # COPYRIGHT
 #   Copyright (C) 2000, 2001 Andy Wardley.  All Rights Reserved.
+#   Copyright (C) 2009 Andrew Ford.  All Rights Reserved.
 #
 #   This module is free software; you can redistribute it and/or
 #   modify it under the same terms as Perl itself.
 #
 # REVISION
-#   $Id: Constants.pm 32 2009-03-17 21:08:25Z ford $
+#   $Id: Constants.pm 78 2009-08-20 20:44:53Z ford $
 #
 #========================================================================
 
@@ -24,8 +26,9 @@ package Pod::POM::Constants;
 require 5.004;
 
 use strict;
+
 use vars qw( $VERSION @SEQUENCE @STATUS @EXPORT_OK %EXPORT_TAGS );
-use base qw( Exporter );
+use parent qw( Exporter );
 
 $VERSION   = sprintf("%d.%02d", q$Revision: 1.1.1.1 $ =~ /(\d+)\.(\d+)/);
 @SEQUENCE  = qw( CMD LPAREN RPAREN FILE LINE CONTENT );
@@ -63,11 +66,15 @@ Constants used by Pod::POM.
 
 =head1 AUTHOR
 
-Andy Wardley E<LT>abw@kfs.orgE<gt>
+Andy Wardley E<lt>abw@kfs.orgE<gt>
+
+Andrew Ford E<lt>a.ford@ford-mason.co.ukE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
 Copyright (C) 2000, 2001 Andy Wardley.  All Rights Reserved.
+
+Copyright (C) 2009 Andrew Ford.  All Rights Reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
