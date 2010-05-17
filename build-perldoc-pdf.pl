@@ -9,14 +9,15 @@ use Getopt::Long;
 
 use lib "$Bin/lib";
 use Perldoc::Config;
-use Perldoc::Page;
-use Perldoc::Page::Convert;
-use Perldoc::Section;
+
 
 
 #--Set config options-----------------------------------------------------
 
-my %specifiers = ( 'output-path' => '=s' );                  
+my %specifiers = (
+  'output-path' => '=s',
+  'perl'        => '=s',
+);                  
 my %options;
 GetOptions( \%options, optionspec(%specifiers) );
 
@@ -40,6 +41,35 @@ unless (-d $options{output_path}) {
 }
 
 $Perldoc::Config::option{output_path}  = $options{output_path};
+
+
+#--Check if we are using a different perl----------------------------------
+
+if ($options{perl}) {
+  #warn "Setting perl to $options{perl}\n";
+  my $version_cmd  = 'printf("%vd",$^V)';
+  my $perl_version = `$options{perl} -e '$version_cmd'`;
+  my $inc_cmd      = 'print "$_\n" foreach @INC';
+  my $perl_inc     = `$options{perl} -e '$inc_cmd'`;
+  my $bin_cmd      = 'use Config; print $Config{bin}';
+  my $perl_bin     = `$options{perl} -e '$bin_cmd'`;
+  
+  $Perldoc::Config::option{perl_version}  = $perl_version;
+  $Perldoc::Config::option{perl5_version} = substr($perl_version,2);
+  $Perldoc::Config::option{inc}           = [split /\n/,$perl_inc];
+  $Perldoc::Config::option{bin}           = $perl_bin;
+  
+  #warn Dumper(\%Perldoc::Config::option);
+}
+
+
+eval <<EOT;
+use Perldoc::Page;
+use Perldoc::Page::Convert;
+use Perldoc::Section; 
+EOT
+
+die $@ if $@;
 
 
 #--Convert pages to PDF---------------------------------------------------
