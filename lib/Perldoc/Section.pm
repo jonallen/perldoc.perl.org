@@ -37,9 +37,9 @@ our @section_data = (
     pages => [qw/perlsyn perldata perlsub perlop
                  perlfunc perlpod perlpodspec perldiag
                  perllexwarn perldebug perlvar perlre
-                 perlreref perlref perlform perlobj perltie
+                 perlreref perlrebackslash perlrecharclass perlref perlform perlobj perltie
                  perldbmfilter perlipc perlfork perlnumber
-                 perlperf perlport perllocale perluniintro perlunicode
+                 perlperf perlport perllocale perluniintro perlunicode perluniprops
                  perlebcdic perlsec perlmod perlmodlib
                  perlmodstyle perlmodinstall perlnewmod
                  perlcompile perlfilter perlglossary CORE
@@ -75,8 +75,8 @@ our @section_data = (
                  perlce perlcygwin perldgux perldos perlepoc
                  perlfreebsd perlhaiku perlhpux perlhurd perlirix perllinux
                  perlmachten perlmacos perlmacosx perlmint perlmpeix
-                 perlnetware perlos2 perlos390 perlos400
-                 perlplan9 perlqnx perlsolaris perlsymbian perltru64 perluts
+                 perlnetware perlopenbsd perlos2 perlos390 perlos400
+                 perlplan9 perlqnx perlriscos perlsolaris perlsymbian perltru64 perluts
                  perlvmesa perlvms perlvos perlwin32/]
   },
   { 
