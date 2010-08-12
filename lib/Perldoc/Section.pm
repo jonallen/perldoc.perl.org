@@ -58,8 +58,8 @@ our @section_data = (
     pages     => [qw/perlhist perltodo perldelta/],
     pagematch => qr/^perl\d+delta$/,
     sort      => sub {
-                   (my $c = $a) =~ s/.*?(\d)(\d+).*/$1.$2/;
-                   (my $d = $b) =~ s/.*?(\d)(\d+).*/$1.$2/;
+                   (my $c = $a) =~ s/.*?(\d{2,}).*/_perldelta_version_to_numeric("$1")/e;
+                   (my $d = $b) =~ s/.*?(\d{2,}).*/_perldelta_version_to_numeric("$1")/e;
                    $d <=> $c
                  }
   },
@@ -138,6 +138,20 @@ sub pages {
     }
   }
   return grep {Perldoc::Page::exists($_)} @pages;
+}
+
+
+#--------------------------------------------------------------------------
+
+sub _perldelta_version_to_numeric {
+  my $delta_version = shift;
+  # 5005 -> 5.005
+  # 56   -> 5.006
+  # 561  -> 5.006001
+  # 5101 -> 5.010001
+  # 51010 -> 5.010010 (no such delta files currently)
+  my ($revision, $version, $subversion) = $delta_version =~ /^(\d)0*(\d(?=\d?\z)|\d\d)(\d*)/;
+  return sprintf('%d.%03d%03d', $revision, $version, $subversion || 0);
 }
 
 
