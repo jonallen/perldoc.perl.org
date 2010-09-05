@@ -30,7 +30,7 @@ use parent qw( Pod::POM::Node );
 use vars qw( %ATTRIBS @ACCEPT $EXPECT $ERROR );
 
 %ATTRIBS =   ( format => undef );
-@ACCEPT  = qw( text verbatim code );
+@ACCEPT  = qw( text verbatim code over head1 head2 head3 head4 );
 $EXPECT  = 'end';
 
 1;
