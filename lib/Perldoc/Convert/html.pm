@@ -221,14 +221,25 @@ sub view_verbatim {
 
 sub view_seq_code {
   my ($self,$text) = @_;
-  
+
   #$text =~ s/&gt;/>/sg;
   #$text =~ s/&lt;/</sg;
   #$text =~ s/&amp;/&/sg;
-  decode_entities($text);
+  #decode_entities($text);
 
   my $linkpath = '../' x (0 + $document_name =~ s/::/::/g);
-  return Perldoc::Syntax::highlight('<code class="inline">','</code>',$text,$linkpath);
+
+  my $rendered;
+  if ($text =~ /<|>/) {
+    $rendered = '<code class="inline">' . $text .'</code>';
+  } else {
+    decode_entities($text);
+    $rendered = Perldoc::Syntax::highlight('<code class="inline">','</code>',$text,$linkpath);
+  }
+  #my $rendered = Perldoc::Syntax::highlight('<code class="inline">','</code>',$text,$linkpath);
+  
+
+  return $rendered;
 }
 
 
