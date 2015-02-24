@@ -19,7 +19,7 @@ our @section_data = (
     id    => 'tutorials',
     name  => 'Tutorials',
     pages => [qw/perlreftut perldsc perllol perlrequick
-                 perlretut perlboot perltoot perltooc perlbot
+                 perlretut perlboot perlootut perltoot perltooc perlbot
                  perlstyle perlcheat perltrap perldebtut
                  perlopentut perlpacktut perlthrtut perlothrtut
                  perlxstut perlunitut perlpragma/]
@@ -35,22 +35,22 @@ our @section_data = (
     id    => 'language',
     name  => 'Language reference',
     pages => [qw/perlsyn perldata perlsub perlop
-                 perlfunc perlpod perlpodspec perldiag
+                 perlfunc perlpod perlpodspec perlpodstyle perldiag
                  perllexwarn perldebug perlvar perlre
                  perlreref perlrebackslash perlrecharclass perlref perlform perlobj perltie
                  perldbmfilter perlipc perlfork perlnumber
-                 perlperf perlport perllocale perluniintro perlunicode perluniprops
+                 perlperf perlport perllocale perluniintro perlunicode perluniprops perlunicook
                  perlebcdic perlsec perlmod perlmodlib
                  perlmodstyle perlmodinstall perlnewmod
-                 perlcompile perlfilter perlglossary CORE
+                 perlcompile perlfilter perlglossary perlexperiment perldtrace CORE
                  /]
   },
   {
     id    => 'internals',
     name  => 'Internals and C language interface',
-    pages => [qw/perlembed perldebguts perlxs perlxstut perlrepository
+    pages => [qw/perlembed perldebguts perlxs perlxstut perlxstypemap perlinterp perlsource perlrepository
                  perlclib perlguts perlcall perlapi perlintern perlmroapi
-                 perliol perlapio perlhack perlreguts perlreapi perlpolicy/]
+                 perliol perlapio perlhack perlhacktut perlhacktips perlreguts perlreapi perlpolicy/]
   },
   { 
     id        => 'history',
