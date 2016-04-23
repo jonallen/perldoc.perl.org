@@ -347,9 +347,9 @@ var perldocSearch = {
             }
           }
           if (this.request) {
-            if (this.request.overrideMimeType) {
-              this.request.overrideMimeType("text/javascript");
-            }
+            //if (this.request.overrideMimeType) {
+              //this.request.overrideMimeType("text/javascript");
+            //}
             this.request.open('GET', filename, false);
             this.request.send(null);
             if (this.request.responseText) {

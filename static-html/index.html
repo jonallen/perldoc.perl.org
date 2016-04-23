@@ -11,11 +11,20 @@
       and the extensive <a href="index-faq.html">FAQ</a> section, which provides answers to over 300 common questions.
     </p>
 
-    <h2>What's new?</h2>
-    <p>
-      As you can see, <strong>perldoc.perl.org</strong> has had a redesign! But it's not just about visuals,
-      almost every aspect of the site has been tweaked and updated, including:
-    </p>
+    <h2>Site features</h2>
+    
+    [% UNLESS download %]
+          <div style="float: right; padding-top: 20px;">
+<a title="The Perl Foundation"
+href="http://www.facebook.com/tpf.perl"
+target="_TOP">
+<img style="border: 0px;"
+src="http://badge.facebook.com/badge/213296278682699.2549.1757479420.png"
+alt="" width="120" height="259" /></a>
+    </div>
+    [% END %]
+     
+    <div[% UNLESS download %] style="width: 500px"[% END %]>     
     <ul>
       <li><strong>Improved navigation</strong><br>
       When you scroll down a page, the top navigation bar remains visible at the top of your screen,
@@ -41,8 +50,7 @@
       View the module indexes with a single click from the left-hand side panel.
       
     </ul>
-    
-   
+    </div>
     
     <a name="download"></a>
     <h2>Downloads</h2>

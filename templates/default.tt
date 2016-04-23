@@ -199,8 +199,7 @@ Explorer 8</a>
           <div id="address">
             <p class="name">Contact details</p>
             <p class="address">
-	      Site maintained by <a href="http://perl.jonallen.info">Jon Allen (JJ)</a><br>
-	      See the <a href="http://perl.jonallen.info/projects/perldoc">project page</a> for more details
+	      Site maintained by <a href="mailto:jj@jonallen.info">Jon Allen (JJ)</a><br>
 	    </p>
             <p class="contact">
               Documentation maintained by the <a href="http://lists.cpan.org/showlist.cgi?name=perl5-porters">Perl 5 Porters</a>
